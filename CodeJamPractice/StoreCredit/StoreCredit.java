@@ -27,7 +27,7 @@ public class StoreCredit{
     // Reading values from file
     try{
 
-      br = new BufferedReader(new FileReader("/home/sdj/CPPWorkspace/GoogleCodeJam/StoreCredit.in"));
+      br = new BufferedReader(new FileReader("/home/sdj/CPPWorkspace/Coding/CodeJamPractice/StoreCredit/StoreCredit.in"));
       currentLine = br.readLine();
       n = Integer.parseInt(currentLine);
       int prevKeyCount=0;
@@ -36,10 +36,10 @@ public class StoreCredit{
         if(count%3==0){
 
           listOfStrings = Arrays.asList(currentLine.split("\\s+")).stream().mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
-          listOfObjects.put(prevKey,listOfStrings);
+          listOfObjects.put(prevKeyCount,listOfStrings);
       }else if((count+1)%3==0){
         prevKeyCount++;
-        prevKey = Integer.parseInt(currentLine);
+        // prevKey = Integer.parseInt(currentLine);
       }else if((count+2)%3==0){
         requiredCredit.add(Integer.parseInt(currentLine));
       }
@@ -59,22 +59,11 @@ public class StoreCredit{
       }
     }
 
-    System.out.println(listOfObjects.size());
-
 
     // Logic goes here
     Iterator itera = listOfObjects.entrySet().iterator();
     List<Integer> iterList = null;
 
-    count = 0;
-    while(itera.hasNext()){
-      count++;
-   //for(Map.Entry pair:listOfObjects.entrySet()){
-     Map.Entry pair = (Map.Entry) itera.next();
-     iterList = (ArrayList)(pair.getValue());
-     // System.out.println(pair.getKey() + " key+value "+((Integer)pair.getKey()==iterList.size()));
-   }
-   System.out.println(count + "count");
    count = 0;
    itera = listOfObjects.entrySet().iterator();
 
@@ -83,6 +72,8 @@ public class StoreCredit{
     int firstValue=0,secondValu=0;
 
     listOfStrings=new ArrayList<Integer>();
+    Integer firstIter = null;
+    Integer secondIter = null;
      while(itera.hasNext()){
     //for(Map.Entry pair:listOfObjects.entrySet()){
       Map.Entry pair = (Map.Entry) itera.next();
@@ -95,18 +86,23 @@ public class StoreCredit{
         if(iterList.indexOf(currentElement-curr)!=-1){
           if(iterList.indexOf(currentElement-curr) > iterList.indexOf(curr)){
 
-            listOfStrings.add(iterList.indexOf(curr));
-            listOfStrings.add(iterList.indexOf(currentElement-curr));
+            firstIter = iterList.indexOf(curr);
+            secondIter = iterList.indexOf(currentElement-curr);
           }else{
             if(currentElement-curr == curr){
-              listOfStrings.add(iterList.indexOf(curr));
-              listOfStrings.add(iterList.lastIndexOf(curr));
+              firstIter = iterList.indexOf(curr);
+              secondIter = iterList.lastIndexOf(curr);
             }
             else{
-              listOfStrings.add(iterList.indexOf(currentElement-curr));
-              listOfStrings.add(iterList.indexOf(curr));
+              firstIter = iterList.indexOf(currentElement-curr);
+              secondIter = iterList.indexOf(curr);
             }
           }
+          if(firstIter.equals(secondIter)){
+            continue;
+          }
+          listOfStrings.add(firstIter);
+          listOfStrings.add(secondIter);
           break;
         }
       }
@@ -115,7 +111,7 @@ public class StoreCredit{
     // Output writing to a file
     count = 1;
     try{
-      PrintWriter pw = new PrintWriter(new FileOutputStream("/home/sdj/CPPWorkspace/GoogleCodeJam/StoreCredit.out"));
+      PrintWriter pw = new PrintWriter(new FileOutputStream("/home/sdj/CPPWorkspace/Coding/CodeJamPractice/StoreCredit/StoreCredit.out"));
       for(Integer iter:listOfStrings){
         if(count%2==0){
             pw.println("Case #"+count/2+": "+(prevKey+1) + " "+(iter+1));
