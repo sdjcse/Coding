@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.lang.Math;
 import java.util.Arrays;
 
+// https://code.google.com/codejam/contest/6254486/dashboard
 public class CountingSheep{
 
   public static void main(String [] args){
