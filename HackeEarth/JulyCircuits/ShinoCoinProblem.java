@@ -1,8 +1,5 @@
-package com.hackerearth.problems;
-
-import com.hackerearth.utilities.StringUtils;
-
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -14,7 +11,6 @@ import java.util.Set;
 public class ShinoCoinProblem
 {
     public ShinoCoinProblem(){
-
     }
     public static void main(String [] args){
         Scanner inputScaner = new Scanner(System.in);
@@ -25,31 +21,49 @@ public class ShinoCoinProblem
 
     public int uniquePairs(int k, String s){
         int strLen = s.length();
+        HashSet<Integer> banList = new LinkedHashSet<Integer>();
+        Set<Character> charSet = new HashSet<>();
         int uniquePairs = 0;
+        int findDupLength = 0;
+
         for(int i=0;i<strLen;i++){
             for(int j=i+k;j<=strLen;j++){
-                if(k == ShinoCoinProblem.removeDuplicates(s.substring(i,j)).length()){
+                if(banList.contains(j)){
+                    continue;
+                }
+                if(charSet.isEmpty()) {
+                    charSet = removeDuplicatesSet(s.substring(i,j));
+                    findDupLength = charSet.size();
+                }else if(!charSet.contains(s.charAt(j-1))){
+                    charSet.add(s.charAt(j-1));
+                    findDupLength++;
+                }
+
+                if(k == findDupLength){
                     uniquePairs++;
                 }
-                else if(k < ShinoCoinProblem.removeDuplicates(s.substring(i,j)).length()){
+                else if(k < findDupLength){
                     break;
+                }else{
+                    banList.add(j);
                 }
             }
+            charSet.clear();
         }
         return uniquePairs;
     }
 
-    public static String removeDuplicates(String s){
-        StringBuilder sb = new StringBuilder();
+    public static Set removeDuplicatesSet(String s){
         Set<Character> seen = new HashSet<Character>();
+        int strLen = s.length();
 
-        for(int i = 0; i < s.length(); ++i) {
+        for(int i = 0; i < strLen; ++i) {
             char c = s.charAt(i);
             if(!seen.contains(c)) {
                 seen.add(c);
-                sb.append(c);
             }
         }
-        return sb.toString();
+
+        return seen;
     }
 }
