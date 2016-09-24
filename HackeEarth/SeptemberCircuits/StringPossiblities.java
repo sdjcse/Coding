@@ -81,8 +81,10 @@ public class StringPossiblities {
         }
 
 
-
-        int minVal = numMap.get('a');
+	// missed this corner case
+	//        int minVal = numMap.get('a');
+	int minVal = numMap.get('a') == null?0:numMap.get('a') ;
+        finAss = minVal ==0?false:true;
         it = numMap.entrySet().iterator();
         while (it.hasNext() && finAss) {
             Map.Entry pair = (Map.Entry) it.next();
