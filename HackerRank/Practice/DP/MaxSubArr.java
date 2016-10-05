@@ -31,18 +31,26 @@ public class MaxSubArr {
     public static void maxSumSubArr(int i,int [][] opArr,List<Integer> arrList){
         int secondSum = 0;
         int maxSumNow = 0,maxSumSoFar = 0;
+        int allNegative = Integer.MIN_VALUE;
         for(int j:arrList){
             if(j>0){
                 secondSum+=j;
             }
             maxSumNow += j;
             if(maxSumNow<0){
+                allNegative = allNegative<j ? j : allNegative;
                 maxSumNow=0;
             }else if(maxSumNow>maxSumSoFar){
                 maxSumSoFar = maxSumNow;
             }
         }
-        opArr[i][0] = maxSumSoFar;
-        opArr[i][1] = secondSum;
+        if(maxSumNow == 0 && maxSumSoFar == 0 && allNegative!= Integer.MIN_VALUE){
+            opArr[i][0] = allNegative;
+            opArr[i][1] = allNegative;
+        }else{
+            opArr[i][0] = maxSumSoFar;
+            opArr[i][1] = secondSum;
+        }
     }
 }
+
