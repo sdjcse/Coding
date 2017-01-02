@@ -1,6 +1,8 @@
 package com.ctci.linkedlist;
 
 
+import sun.awt.image.ImageWatched;
+
 /**
  * Created by sdj on 12/30/16.
  */
@@ -45,7 +47,10 @@ public class LinkedListCust
         LinkedListCust secondPtr = this;
         while(firstPtr != null && secondPtr!=null){
             firstPtr = firstPtr.next;
-            secondPtr = secondPtr.next.next;
+            secondPtr = secondPtr.next;
+            if(secondPtr!=null){
+                secondPtr = secondPtr.next;
+            }
             if(firstPtr==secondPtr)
                 return true;
         }
@@ -86,23 +91,85 @@ public class LinkedListCust
         return 0;
     }
 
+    public LinkedListCust reverse(LinkedListCust present,LinkedListCust prev){
+        if(present.next == null){
+            present.next = prev;
+            return present;
+        }
+        LinkedListCust temp = present.next;
+        present.next = prev;
+        return reverse(temp,present);
+    }
+    public boolean equalsLL(LinkedListCust b){
+        LinkedListCust run1 = this;
+        LinkedListCust run2 = b;
+        for(;run1!=null && run2!=null; run1 = run1.next,run2=run2.next)
+            if(run1.data != run2.data)
+                return false;
+
+        return true;
+    }
+    LinkedListCust findMid(LinkedListCust a){
+        LinkedListCust runner = a,walker = a;
+        while(runner!=null){
+            runner = runner.next;
+            if(runner!= null){
+                runner = runner.next;
+                walker = walker.next;
+            }
+
+        }
+        return walker;
+    }
+    public LinkedListCust split(){
+        LinkedListCust head1 = this;
+        LinkedListCust mid = this.findMid(this);
+        LinkedListCust head2 = mid;
+        LinkedListCust prev = head1;
+        while(head1!=null && head1!=mid){
+            prev = head1;
+            head1=head1.next;
+        }
+        prev.next = null;
+        return head2;
+    }
     public boolean checkPalindrome(){
         if(this.checkIfLooped())
             return false;
-        int lenMid = this.length();
-
-        return false;
+        LinkedListCust temp = this.split();
+        temp = this.reverse(temp,null);
+        printLL(temp);
+        printLL(this);
+        LinkedListCust reference = this;
+        boolean retVal = this.equalsLL(temp);
+        reference = this.joinLL(this.reverse(temp,null));
+        return retVal;
     }
 
+    public LinkedListCust joinLL(LinkedListCust a){
+        LinkedListCust runner = this;
+        while(runner.next!=null)
+            runner = runner.next;
+        runner.next = a;
+        return this;
+    }
+    public void printLL(LinkedListCust printThis){
+        while(printThis!=null){
+            System.out.print(printThis.data + " ");
+            printThis = printThis.next;
+        }
+        System.out.println();
+    }
     public static void main(String[] args)
     {
         LinkedListCust a= new LinkedListCust(12);
         a.next = new LinkedListCust(13);
         a.next.next = new LinkedListCust(10);
-        a.next.next.next = new LinkedListCust(7);
-        a.next.next.next.next = new LinkedListCust(21);
-        a.next.next.next.next.next = a.next.next;
-
-        System.out.println(a.startOfLoop().data);
+        a.next.next.next = new LinkedListCust(13);
+         a.next.next.next.next = new LinkedListCust(12);
+        // a.next.next.next.next.next = a.next.next;
+        //a.printLL(a.reverse(a.findMid(a),null));
+        System.out.println(a.checkPalindrome());
+        a.printLL(a);
     }
 }
