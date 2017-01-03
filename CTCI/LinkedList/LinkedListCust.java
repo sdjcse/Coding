@@ -138,8 +138,6 @@ public class LinkedListCust
             return false;
         LinkedListCust temp = this.split();
         temp = this.reverse(temp,null);
-        printLL(temp);
-        printLL(this);
         LinkedListCust reference = this;
         boolean retVal = this.equalsLL(temp);
         reference = this.joinLL(this.reverse(temp,null));
@@ -170,6 +168,5 @@ public class LinkedListCust
         // a.next.next.next.next.next = a.next.next;
         //a.printLL(a.reverse(a.findMid(a),null));
         System.out.println(a.checkPalindrome());
-        a.printLL(a);
     }
 }
