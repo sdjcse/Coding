@@ -4,6 +4,8 @@ import java.util.*;
 
 /**
  * Created by sdj on 9/12/16.
+
+ * Intern quests
  */
 public class Solution {
     public static void main(String[] args) {
