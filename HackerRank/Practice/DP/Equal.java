@@ -34,47 +34,33 @@ public class Equal
         }
     }
 
-    public static int countOper(List<Integer> inList){
-        int oper = 0;
-        int mid = 0;
-        int min = 0;
-        mainSet = new TreeSet<>(inList);
-        while (mainSet.size()!=1){
-            mid = midVal();
-            min = minVal();
-            if(mid-min == 1){
-                incList(inList,1,inList.indexOf(mid));
-            }else if(mid-min<5){
-                incList(inList,2,inList.indexOf(mid));
-            }else if (mid-min>=5){
-                incList(inList,5,inList.indexOf(mid));
-            }
-            oper++;
+    public static int func(int minVal){
+        int retVal = 0;
+        if(minVal>=5){
+            retVal = minVal/5;
+            minVal %= 5;
         }
-        return oper;
-    }
-
-    public static boolean allEqual(List<Integer> inList){
-        return new HashSet<>(inList).size()==1;
-    }
-    public static void incList(List<Integer> inList,int num,int doNotIncInd){
-        mainSet.clear();
-        for (int i = 0; i < inList.size(); i++)
+        if(minVal>=0)
         {
-
-            if(i == doNotIncInd){
-                mainSet.add(inList.get(doNotIncInd));
-                continue;
-            }
-            inList.set(i,inList.get(i)+num);
-            mainSet.add(inList.get(i));
+            retVal += minVal/2;
+            minVal %=2;
         }
+        retVal += minVal;
+        return retVal;
     }
-    public static int midVal(){
-        return Arrays.copyOf(mainSet.toArray(),mainSet.size(),Integer[].class)[mainSet.size()/2];
-    }
-
-    public static int minVal(){
-        return Arrays.copyOf(mainSet.toArray(),mainSet.size(),Integer[].class)[0];
+    public static int countOper(List<Integer> inList){
+        Collections.sort(inList);
+        int min = inList.get(0);
+        int temp = 0;
+        List<Integer> compList = new ArrayList<>();
+        for (int j=0;j<=5;j++){
+            compList.add(0);
+            for(int i=0;i<inList.size();i++){
+                temp = Math.abs(inList.get(i)-(min-j));
+                compList.set(j,compList.get(j)+func(temp));
+            }
+        }
+        Collections.sort(compList);
+        return compList.get(0);
     }
 }
