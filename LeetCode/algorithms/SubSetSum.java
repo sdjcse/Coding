@@ -1,7 +1,6 @@
 package LeetCode.algorithms;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Dhananjayan on 5/5/2017.
@@ -16,20 +15,15 @@ public class SubSetSum {
 
     public int [] subSetSum( int [] nums,int target){
         Map<Integer,Integer> numList = new HashMap<>();
+        int [] retArr = new int[2];
         for (int i = 0; i < nums.length; i++) {
+            if(numList.containsKey(target-nums[i])){
+                retArr[1] = i;
+                retArr[0] = numList.get(target-nums[i]);
+                return retArr;
+            }
             numList.put(nums[i],i);
         }
-        int retNum [] = new int[2];
-        for (int i = 0; i < numList.size(); i++) {
-            retNum[0] = i;
-            Boolean bool = numList.containsKey(target-nums[i]);
-            if(bool!=null && bool){
-                retNum[1] = numList.get(target-nums[i]);
-                if(retNum[0]==retNum[1])
-                    continue;
-                return retNum;
-            }
-        }
-        return null;
+        return retArr;
     }
 }
