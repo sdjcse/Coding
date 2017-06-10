@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/AprilCircuit" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/AugustCircuit" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/AugustEasy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ChristmasCircuits" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CodeMonkHash" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/DecemberClash" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/GameOfCodes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/JulyCircuits" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/JulyEasy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PracticeDs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/SeptemberCircuits" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

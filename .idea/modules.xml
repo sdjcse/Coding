@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CTCI/CTCI.iml" filepath="$PROJECT_DIR$/CTCI/CTCI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HackerRank/Challenge/Challenge.iml" filepath="$PROJECT_DIR$/HackerRank/Challenge/Challenge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CodeJamPractice/CodeJamPractice.iml" filepath="$PROJECT_DIR$/CodeJamPractice/CodeJamPractice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CodingGit.iml" filepath="$PROJECT_DIR$/CodingGit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HackeEarth/HackeEarth.iml" filepath="$PROJECT_DIR$/HackeEarth/HackeEarth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HackerRank/Practice/Practice.iml" filepath="$PROJECT_DIR$/HackerRank/Practice/Practice.iml" />
+    </modules>
+  </component>
+</project>
