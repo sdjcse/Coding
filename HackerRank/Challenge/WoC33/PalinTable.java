@@ -86,7 +86,8 @@ public class PalinTable{
     public void palinTable(CustomKey key){
         boolean sec = visitedSet.contains(key);
         boolean thir = checkBoundary(key);
-        if(sec || !thir){
+        boolean fir = maxArea >= findArea(key);
+        if(fir || sec || !thir){
             return;
         }
         if(maxArea < findArea(key) && isPalin(key)){
