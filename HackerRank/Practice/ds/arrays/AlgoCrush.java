@@ -22,11 +22,17 @@ public class AlgoCrush {
             start = input.nextInt();
             end = input.nextInt();
             incrementer = input.nextInt();
-            for(int j = start;j<=end;j++){
-                dataArr[j] += incrementer;
-                if(dataArr[j] > maxVal){
-                    maxVal = dataArr[j];
-                }
+            dataArr[start] += incrementer;
+            if(end+1<=n){
+                dataArr[end+1] -= incrementer;
+            }
+        }
+
+        int x = 0;
+        for (int i = 0; i < dataArr.length; i++) {
+            x += dataArr[i];
+            if(x>maxVal){
+                maxVal = x;
             }
         }
 
