@@ -76,7 +76,7 @@ public class CastleHill {
         // Generating adjecency matrix
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid.length; j++) {
-                if(grid[i].charAt(j)!='x'){
+                if(grid[i].charAt(j)!='X'){
                     fillInSideWays(i,j,adjacencyMat,grid);
                 }
             }
@@ -121,14 +121,14 @@ public class CastleHill {
     private static void fillInSideWays(int x,int y,boolean[][] adjacencyMat,String [] grid){
         // downward
         for (int i = x+1; i < grid.length; i++) {
-            if(grid[i].charAt(y)=='x'){
+            if(grid[i].charAt(y)=='X'){
                 break;
             }
             adjacencyMat[points.get(new Point(x,y))][points.get(new Point(i,y))] = true;
         }
         // upward
         for (int i = x-1; i >= 0; i--) {
-            if(grid[i].charAt(y)=='x'){
+            if(grid[i].charAt(y)=='X'){
                 break;
             }
             adjacencyMat[points.get(new Point(x,y))][points.get(new Point(i,y))] = true;
@@ -136,14 +136,14 @@ public class CastleHill {
 
         // right
         for (int i = y+1; i < grid.length; i++) {
-            if(grid[x].charAt(i)=='x'){
+            if(grid[x].charAt(i)=='X'){
                 break;
             }
             adjacencyMat[points.get(new Point(x,y))][points.get(new Point(x,i))] = true;
         }
         // left
         for (int i = y-1; i >= 0; i--) {
-            if(grid[x].charAt(i)=='x'){
+            if(grid[x].charAt(i)=='X'){
                 break;
             }
             adjacencyMat[points.get(new Point(x,y))][points.get(new Point(x,i))] = true;
