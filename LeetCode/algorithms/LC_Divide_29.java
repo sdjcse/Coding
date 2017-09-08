@@ -2,10 +2,17 @@ package LeetCode.algorithms;
 
 public class LC_Divide_29 {
     public static void main(String[] args) {
-        System.out.println(
+        /* System.out.println(
                 new LC_Divide_29().divide(
                         -2147483648,
                         2
+                )
+        ); */
+
+
+        System.out.println(
+                optiDivide(
+                        200,4
                 )
         );
     }
@@ -28,6 +35,29 @@ public class LC_Divide_29 {
         }
         quotient = negative ? (quotient*-1) : quotient;
         return returner(quotient);
+    }
+
+    public static int optiDivide(int dividend, int divisor){
+        if(divisor == 0){
+            return Integer.MAX_VALUE;
+        }else if(divisor == -1 && dividend == Integer.MIN_VALUE){
+            return Integer.MAX_VALUE;
+        }
+        long interDiv = Math.abs((long)dividend);
+        long interDivisor = Math.abs((long)divisor);
+        int result = 0;
+        while(interDiv>=interDivisor){
+            int numShift = 0;
+            while(interDiv>=(interDivisor<<numShift)){
+                numShift++;
+            }
+            result += 1<<(numShift-1);
+            interDiv -= (interDivisor<<(numShift-1));
+        }
+        if((dividend>0 && divisor>0) || (dividend<0 && divisor<0)){
+            return result;
+        }
+        return -result;
     }
 
     public int returner(long num){
