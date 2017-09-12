@@ -6,17 +6,17 @@ public class LC_IntegerToRoman_12 {
     public static void main(String[] args) {
         System.out.println(
                 intToRoman(
-                        1904
+                        11
                 )
         );
     }
 
-    private static String intToRoman(int n){
+    private static String intToRoman(int num){
         String output = "";
         Map<Integer,String> bases = frameBaseMap();
         List<Integer> baseList = new ArrayList<>(bases.keySet());
         Collections.sort(baseList);
-        int copy = n;
+        int copy = num;
         while(copy > 0){
             if(copy > baseList.get(baseList.size()-1)){
                 output += bases.get(baseList.get(baseList.size()-1));
@@ -31,6 +31,7 @@ public class LC_IntegerToRoman_12 {
                 }else if(baseList.get(i) > copy){
                     output += bases.get(baseList.get(i-1));
                     copy -= baseList.get(i-1);
+                    i=-1;
                 }
             }
         }
