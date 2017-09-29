@@ -1,10 +1,5 @@
 package algorithms;
 
-class ListNode {
-      int val;
-      ListNode next;
-      ListNode(int x) { val = x; }
-  }
 public class LC_SwapPairs_24 {
 
     public static void main(String[] args) {
@@ -14,7 +9,7 @@ public class LC_SwapPairs_24 {
         printLL(framedList);
     }
 
-    private static ListNode frameLL(int [] arr){
+    public static ListNode frameLL(int [] arr){
         ListNode head,temp = new ListNode(arr[0]);
         head = temp;
         for (int i = 1; i < arr.length; i++) {
@@ -24,7 +19,7 @@ public class LC_SwapPairs_24 {
         return head;
     }
 
-    private static void printLL(ListNode head){
+    public static void printLL(ListNode head){
         ListNode temp = head;
         while (temp!=null){
             System.out.println(temp.val);
