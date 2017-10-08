@@ -1,4 +1,4 @@
-package algorithms;
+/*package algorithms;
 
 public class LC_OddEvenList_328 {
 
@@ -28,3 +28,4 @@ public class LC_OddEvenList_328 {
         return head;
     }
 }
+*/
